@@ -1,7 +1,7 @@
 
 # Complete Ecommerce Projet
 
-This Is a Complete Ecommerce Project with full admin control panel.
+This Is a Complete Ecommerce Laravel Project, with full admin control panel.
 where admin can add product,edit product , can also mange orders and user.
 #including Email varification
 #peyment getway
@@ -10,7 +10,7 @@ where admin can add product,edit product , can also mange orders and user.
 
 
 ## Appendix
-
+This is a Laravel project
 You Can Download the fornt end and Admin theme, from the link given down below.
 And this is full ecommerce site Project.
 
