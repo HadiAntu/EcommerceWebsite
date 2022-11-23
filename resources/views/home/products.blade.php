@@ -8,12 +8,17 @@
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <!-- Site Metas -->
       <meta name="keywords" content="" />
+      {{-- ajax --}}
+      <meta name="csrf-token" content="{{ csrf_token() }}">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      
       <meta name="description" content="" />
       <meta name="author" content="" />
       <link rel="shortcut icon" href="images/favicon.png" type="">
       <title>www.Ecommerce.com</title>
       <!-- bootstrap core css -->
       <link rel="stylesheet" type="text/css" href="{{asset('home/css/bootstrap.css')}}" />
+      
       <!-- font awesome style -->
       <link href="{{asset('home/css/font-awesome.min.css')}}" rel="stylesheet" />
       <!-- Custom styles for this template -->
@@ -42,17 +47,17 @@
             </div>
          </div>
       </section>
-	  <div class="search-container" style="width: 300px;display: flex;
-	  justify-content: center;
-	  align-items: center;">
+	  <div class="form-control" style="width: 500px;margin-left:440px" >
+
 		<form action="{{route('productsearch')}}" method="post">
          @csrf 
-         <input type="text" placeholder="Search.." name="search">
-         <button type="submit"><i class="fa fa-search"></i></button>
+         <input type="text" placeholder="Search your product.." name="search" id="search" >
+         <button class="btn btn-primary btn-sm" type="submit"><i class="fa fa-search"></i></button>
      </form>
 	  </div>
       <!-- end inner page section -->
       <!-- product section -->
+      
       <section class="product_section layout_padding">
          <div class="container">
             <div class="heading_container heading_center">
@@ -61,6 +66,7 @@
                </h2>
             </div>
             <div class="row">
+               <tbody class="alldata">
 				@foreach ($product as $products)
                <div class="col-sm-6 col-md-4 col-lg-3">
                   <div class="box">
@@ -88,6 +94,12 @@
                   </div>
 				</div>
 				@endforeach
+         </tbody>
+            <table>
+               <tbody id="content" class="searchdata"></tbody>
+            </table>
+
+
             </div>
             <div class="btn-box">
                <a href="">
@@ -96,8 +108,31 @@
             </div>
          </div>
       </section>
+  
       <!-- end product section -->
       <!-- footer section -->
       @include('home.footer')
+
+      @include('home.script')
+
+      <script type="text/javascript">
+      $('#search').on('keyup',function()
+      {
+         $value=$(this).val();
+        
+         $.ajax({
+            type:'get',
+            url: '{{URL::to('productsearch')}}',
+            data:{'search':$value},
+
+            success::function(data)
+            {
+               console.log(data);
+               $('#content').html(data);
+            }
+
+         });
+      })
+      </script>
 </body>
 </html>

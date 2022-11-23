@@ -64,8 +64,11 @@ class OrderController extends Controller
    
     public function search(Request $request)
     {
+        
         $search=$request->search;
         $data =order::where('name','Like','%'.$search.'%')->orWhere('productName','Like','%'.$search.'%')->get();
+
+      
         return view('admin.order',compact('data'));
     }
 

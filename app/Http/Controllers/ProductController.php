@@ -17,6 +17,7 @@ class ProductController extends Controller
 
     public function productProcess(Request $request)
     {
+        
    
 
         $product=new Product();
@@ -98,9 +99,12 @@ class ProductController extends Controller
     public function search(Request $request)
     {
         
+        
         $search=$request->search;
         $product =product::where('title','Like','%'.$search.'%')->orWhere('description','Like','%'.$search.'%')->get();
-        return view('home.search',compact('product'));
+
+       
+     return view('home.search',compact('product'));
     }
     
 }
