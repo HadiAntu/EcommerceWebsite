@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RatingController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,3 +79,10 @@ Route::post('/addReply',[HomeController::class,'addReply'])->name('addReply');
 Route::get('/blog',[HomeController::class,'blog'])->name('blog');
 Route::get('/contact',[HomeController::class,'contact'])->name('contact');
 Route::post('/search',[ProductController::class,'search'])->name('productsearch');
+
+
+
+//rating
+
+Route::get('/rating',[RatingController::class,'rating'])->name('rating');
+Route::get('/admin/approved/{id}',[RatingController::class,'approved'])->name('approved');

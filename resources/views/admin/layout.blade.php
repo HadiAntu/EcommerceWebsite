@@ -184,6 +184,11 @@
                                 <i class="fas fa-table"></i>Coupon</a>
                         </li>
                        
+                        <li>
+                            <a href="{{route('rating')}}">
+                                <i class="fas fa-table"></i>Rating</a>
+                        </li>
+                       
                        
                     </ul>
                 </nav>
